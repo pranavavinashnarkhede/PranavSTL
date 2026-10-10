@@ -8,5 +8,6 @@
 #include "DoublyCL.hpp"
 #include "Stack.hpp"
 #include "Queue.hpp"
+#include "Tree.hpp"
 
 #endif
