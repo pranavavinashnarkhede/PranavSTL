@@ -9,5 +9,6 @@
 #include "Stack.hpp"
 #include "Queue.hpp"
 #include "Tree.hpp"
+#include "Searching.hpp"
 
 #endif
