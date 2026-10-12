@@ -10,5 +10,6 @@
 #include "Queue.hpp"
 #include "Tree.hpp"
 #include "Searching.hpp"
+#include "Sorting.hpp"
 
 #endif
