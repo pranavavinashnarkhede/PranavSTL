@@ -64,7 +64,6 @@ namespace pstl
             std::cin >> Arr[i];
         }
 
-        IsSorted = false;
     }
 
     // Display
