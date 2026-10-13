@@ -1,0 +1,40 @@
+# Compiled executables
+*.exe
+*.out
+a.out
+
+# Object and library files
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+
+# Debug and profiling files
+*.pdb
+*.ilk
+*.prof
+*.gcda
+*.gcno
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.code-workspace
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary and backup files
+*.tmp
+*.temp
+*.bak
+*~
+
+# Build output directories
+build/
+bin/

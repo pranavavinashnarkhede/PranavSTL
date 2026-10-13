@@ -1,26 +1,32 @@
-````markdown
 # PranavSTL
 
-PranavSTL is a custom C++ template-based data structure library inspired by the C++ Standard Template Library (STL).
+PranavSTL is a custom C++ data structure and algorithm library inspired by the C++ Standard Template Library (STL).
 
-The project is developed from scratch to understand how fundamental data structures and reusable C++ library components are designed and implemented.
+The project is developed from scratch to practise C++ templates, pointers, dynamic memory management, and reusable C++ components.
 
 ## Features
 
-Currently implemented:
-
+### Data Structures
 - Singly Linked List
 - Singly Circular Linked List
 - Doubly Linked List
 - Doubly Circular Linked List
+- Stack
+- Queue
+- Binary Search Tree (BST)
 
-All data structures are implemented using C++ templates, allowing them to work with different data types.
+### Algorithms
+- Linear Search
+- Bidirectional Search
+- Bubble Sort
+- Efficient Bubble Sort
+- Selection Sort
+- Insertion Sort
 
 ## Project Structure
 
 ```text
 PranavSTL/
-│
 ├── include/
 │   └── pstl/
 │       ├── node.hpp
@@ -28,138 +34,49 @@ PranavSTL/
 │       ├── SinglyCL.hpp
 │       ├── DoublyLL.hpp
 │       ├── DoublyCL.hpp
+│       ├── Stack.hpp
+│       ├── Queue.hpp
+│       ├── Tree.hpp
+│       ├── Searching.hpp
+│       ├── Sorting.hpp
 │       └── pstl.hpp
-│
 ├── example/
 │   ├── SinglyLL.cpp
 │   ├── SinglyCL.cpp
 │   ├── DoublyLL.cpp
-│   └── DoublyCL.cpp
-│
+│   ├── DoublyCL.cpp
+│   ├── Stack.cpp
+│   ├── Queue.cpp
+│   ├── Tree.cpp
+│   ├── Searching.cpp
+│   └── Sorting.cpp
+├── TestAll.cpp
 └── README.md
-````
-
-## Data Structures
-
-### Singly Linked List
-
-Implemented in `SinglyLL.hpp`.
-
-Supported operations:
-
-* `InsertFirst()`
-* `InsertLast()`
-* `InsertAtPos()`
-* `DeleteFirst()`
-* `DeleteLast()`
-* `DeleteAtPos()`
-* `Display()`
-* `Count()`
-
-### Singly Circular Linked List
-
-Implemented in `SinglyCL.hpp`.
-
-Supported operations:
-
-* `InsertFirst()`
-* `InsertLast()`
-* `InsertAtPos()`
-* `DeleteFirst()`
-* `DeleteLast()`
-* `DeleteAtPos()`
-* `Display()`
-* `Count()`
-
-### Doubly Linked List
-
-Implemented in `DoublyLL.hpp`.
-
-Supported operations:
-
-* `InsertFirst()`
-* `InsertLast()`
-* `InsertAtPos()`
-* `DeleteFirst()`
-* `DeleteLast()`
-* `DeleteAtPos()`
-* `Display()`
-* `Count()`
-
-### Doubly Circular Linked List
-
-Implemented in `DoublyCL.hpp`.
-
-Supported operations:
-
-* `InsertFirst()`
-* `InsertLast()`
-* `InsertAtPos()`
-* `DeleteFirst()`
-* `DeleteLast()`
-* `DeleteAtPos()`
-* `Display()`
-* `Count()`
-
-## Common Node
-
-`node.hpp` contains the common template node structure used by the linked-list implementations.
-
-```cpp
-template <class T>
-struct node
-{
-    T data;
-    struct node<T> *next;
-    struct node<T> *prev;
-};
 ```
 
-## Common Header
+## Header Overview
 
-`pstl.hpp` acts as the main library header and includes all currently implemented data structures.
+| Header | Purpose |
+|---|---|
+| `node.hpp` | Common node structure used by linked-list-based components |
+| `SinglyLL.hpp` | Singly linked list |
+| `SinglyCL.hpp` | Singly circular linked list |
+| `DoublyLL.hpp` | Doubly linked list |
+| `DoublyCL.hpp` | Doubly circular linked list |
+| `Stack.hpp` | Stack implementation |
+| `Queue.hpp` | Queue implementation |
+| `Tree.hpp` | Binary search tree operations |
+| `Searching.hpp` | Linear and bidirectional searching |
+| `Sorting.hpp` | Bubble, efficient bubble, selection, and insertion sorting |
+| `pstl.hpp` | Common header that includes the library components |
 
-```cpp
-#include "../include/pstl/pstl.hpp"
-```
+## Using the Library
 
-This allows the user to access the complete library through a single header.
-
-## Namespace
-
-All library components are organized inside the:
-
-```cpp
-namespace pstl
-```
-
-namespace.
-
-Example:
+Include the common header from a source file in the project root:
 
 ```cpp
-pstl::SinglyLL<int> list;
-pstl::SinglyCL<int> circularList;
-pstl::DoublyLL<int> doublyList;
-pstl::DoublyCL<int> doublyCircularList;
-```
-
-## Templates
-
-PranavSTL uses C++ templates so the same data structure can work with different data types.
-
-Example:
-
-```cpp
-pstl::SinglyLL<int> intList;
-pstl::SinglyLL<double> doubleList;
-```
-
-## Example
-
-```cpp
+#include "include/pstl/pstl.hpp"
 #include <iostream>
-#include "../include/pstl/pstl.hpp"
 
 int main()
 {
@@ -170,85 +87,73 @@ int main()
     list.InsertLast(30);
 
     list.Display();
-
     std::cout << "Count: " << list.Count() << std::endl;
 
     return 0;
 }
 ```
 
-## Compilation
+## Build and Run
 
-Navigate to the `example` directory:
+Compile the integration test from the project root:
 
-```cmd
-cd example
+```bash
+g++ -std=c++17 TestAll.cpp -o TestAll.exe
 ```
 
-Compile the examples individually:
+Run it on Windows Command Prompt:
 
 ```cmd
-g++ SinglyLL.cpp -o SinglyLL
+TestAll.exe
 ```
+
+The integration test exercises the components through `pstl.hpp`. It asks for input for the searching and sorting tests.
+
+Compile an individual example from the project root, for example:
+
+```bash
+g++ -std=c++17 example/Sorting.cpp -o Sorting.exe
+```
+
+Run it:
 
 ```cmd
-g++ SinglyCL.cpp -o SinglyCL
+Sorting.exe
 ```
 
-```cmd
-g++ DoublyLL.cpp -o DoublyLL
-```
+Other example files can be compiled in the same way.
 
-```cmd
-g++ DoublyCL.cpp -o DoublyCL
-```
+## Testing
 
-Run the required example:
-
-```cmd
-SinglyLL
-```
-
-```cmd
-SinglyCL
-```
-
-```cmd
-DoublyLL
-```
-
-```cmd
-DoublyCL
-```
+`TestAll.cpp` is an integration test for the library components. Continue checking edge cases such as empty structures, single-element structures, duplicate values, invalid positions, and sorted or reverse-sorted arrays.
 
 ## Development Status
 
-| Component                   | Status    |
-| --------------------------- | --------- |
-| Singly Linked List          | Completed |
-| Singly Circular Linked List | Completed |
-| Doubly Linked List          | Completed |
-| Doubly Circular Linked List | Completed |
-| Common `node.hpp`           | Completed |
-| Common `pstl.hpp`           | Completed |
-| Example/Test Programs       | Completed |
+| Component | Status |
+|---|---|
+| Singly Linked List | Implemented |
+| Singly Circular Linked List | Implemented |
+| Doubly Linked List | Implemented |
+| Doubly Circular Linked List | Implemented |
+| Stack | Implemented |
+| Queue | Implemented |
+| Binary Search Tree | Implemented |
+| Searching algorithms | Implemented |
+| Sorting algorithms | Implemented |
+| Common `pstl.hpp` header | Integrated |
+| Example programs | Added |
+| `TestAll.cpp` integration test | Added |
 
 ## Learning Objectives
 
-The project focuses on understanding:
-
-* C++ Templates
-* Data Structures
-* Pointers
-* Dynamic Memory Management
-* Linked Lists
-* Circular Linked Lists
-* Doubly Linked Lists
-* Object-Oriented Programming
-* Header-only C++ library design
-* Namespace organization
-* Reusable C++ components
-* Library project structure
+- C++ templates and generic programming
+- Pointers and dynamic memory management
+- Linked lists, stacks, and queues
+- Binary search trees
+- Searching and sorting algorithms
+- Object-oriented programming
+- Header-only library design
+- Namespaces and reusable components
 
 ## Author
 
@@ -257,6 +162,3 @@ The project focuses on understanding:
 ## Language
 
 **C++**
-
-```
-```
